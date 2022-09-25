@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux"
-import { upvoteQuote, downvoteQuote } from "./quotesSlice";
+import { upvoteQuote, downvoteQuote, removeQuote } from "./quotesSlice";
 
 
 function QuoteCard({ quote }) {
@@ -13,6 +13,10 @@ function QuoteCard({ quote }) {
 
 	function handleOnClickDownvote() {
 		dispatch(downvoteQuote(quote.id));
+	}
+
+	function handleOnClickDelete() {
+		dispatch(removeQuote(quote.id))
 	}
 
   return (
@@ -39,7 +43,7 @@ function QuoteCard({ quote }) {
             <button type="button" className="btn btn-secondary" onClick={handleOnClickDownvote}>
               Downvote
             </button>
-            <button type="button" className="btn btn-danger">
+            <button type="button" className="btn btn-danger" onClick={handleOnClickDelete}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
